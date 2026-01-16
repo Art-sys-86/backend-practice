@@ -1,6 +1,6 @@
 import Note from "../models/Note.js"; //Importing the blueprint of Note model from Note so it can used here!
 
-export async function getAllNotes(req, res) {
+export async function getAllNotes(_, res) { //we used underscore because we never used req so we are replacing it with underscore
     try {
         const notes = await Note.find().sort({createdAt: -1}); //We are finding all the notes and grabing it! createAt = to show newest first
         res.status(200).json(notes); //Send the notes after grabbing it
