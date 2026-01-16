@@ -1,7 +1,7 @@
 import express from "express";
-import noteRoutes from "./Routes/notesRoute.js"
-import { connectDB } from "./config/db.js";
-import dotenv from "dotenv";
+import noteRoutes from "./Routes/notesRoute.js" //import noteRoutes from noteRouter.js file so it can work in sever js
+import { connectDB } from "./config/db.js"; //connect to MongoDB database and import it
+import dotenv from "dotenv"; //Import dotenv package so it can used here.
 
 dotenv.config(); //in order to be able to write the env file inside db js file
 //env = environment variables, only avaliable locally to the creator!
@@ -10,6 +10,8 @@ const app = express(); //express
 const PORT = process.env.PORT || 5001
 
 connectDB(); //connect to database
+
+app.use(express.json()); //Middleware that helps to get value of note in notecontroller
 
 app.use("/api/notes", noteRoutes);
 
